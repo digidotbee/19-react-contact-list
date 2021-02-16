@@ -1,14 +1,19 @@
 import contactsJSON from './contacts.json'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { FaUser } from 'react-icons/fa';
 
 export default function Contact() {
 
     const [contacts, setContact] = useState(contactsJSON)
-    return <div>Contacts
-        <ul>
+    return <div className="container">
+        <h2 className="myPeeps">My Peeps</h2>
+        <ul className="newtask">
             {contacts.map((contact) => {
-                return <h3><Link to={`detail/${contact.id}`}>{contact.name.first} {contact.name.last}</Link></h3>
+                return <li>
+                    <Link to={`detail/${contact.id}`}>
+                        <img src={contact.picture.thumbnail}></img>
+                         {contact.name.first} {contact.name.last}</Link></li>
             })}
         </ul>
     </div>
